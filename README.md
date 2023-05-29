@@ -22,7 +22,7 @@ chmod 777 ocultismo
 
 COMO USAR:
 
-Cuando ejecutes la herramienta te saldrá un aviso preguntandote que si ya tienes instalas todas las herramientas para ejecutarlo correctamente, la primera vez le daremos en letra "y" que significa "yes" y se nos empezará a descargar todo lo necesario (esto solo lo haremos la primera vez que hayamos instalado la herramienta)
+Cuando ejecutes la herramienta te saldrá un aviso preguntandote que si ya tienes instaladas todas las herramientas para ejecutarlo correctamente, la primera vez le daremos en letra "y" que significa "yes" y se nos empezará a descargar todo lo necesario (esto solo lo haremos la primera vez que hayamos instalado la herramienta)
 
 Cuando te pida permisos de almacenamiento dale en "Aceptar" para continuar.
 
