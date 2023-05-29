@@ -38,7 +38,7 @@ A continuación elige una contraseña para proteger el texto a ocultar
 
 ' 
 sleep 2
-steghide embed -ef ocultar.txt -cf default.jpg
+steghide embed -ef ocultar.txt -cf sfemz.jpg
 echo '
 [ + ] Texto ocultado exitosamente!!'
 almacenar 
