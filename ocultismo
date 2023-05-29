@@ -1,0 +1,221 @@
+almacenar() {
+rm ocultar.txt
+clear 
+sleep 2
+echo 'Almacenando imagen...' 
+sleep 2
+echo ' ' 
+cp sfemz.jpg ~/storage/downloads
+echo '[ X ] Imagen almacenada en Descargas como sfemz.jpg'
+sleep 2
+echo '
+Gracias por usar el script <3
+
+Autor : Sfemz
+' 
+sleep 2
+} 
+imagen() {
+clear
+echo '
+
+[ X ] Si deseas utilizar una imagen personalizada, es necesario moverla al directorio actual, por defecto se usará la imagen que trae la herramienta
+
+' 
+sleep 3
+read -p '[ X ] Deseas utilizar la imagen que se encuentra por defecto [Y/N]?: ' ruta
+case $ruta in
+Y | y | s | S | si | Yes | SI)
+clear
+sleep 2
+echo '
+
+[ + ] Procesando...' 
+sleep 3
+echo '
+
+A continuación elige una contraseña para proteger el texto a ocultar 
+
+' 
+sleep 2
+steghide embed -ef ocultar.txt -cf default.jpg
+echo '
+[ + ] Texto ocultado exitosamente!!'
+almacenar 
+;;
+*)
+clear
+read -p 'Elige la imagen personalizada: ' img
+sleep 2
+echo 'Procesando...' 
+sleep 3
+echo '
+A continuación elige una contraseña para proteger el texto a ocultar 
+
+' 
+steghide embed -ef ocultar.txt -cf $img
+echo '
+Texto ocultado exitosamente!!' 
+;;
+esac
+} 
+ganog() {
+clear
+sleep 2.5
+echo '
+
+//Antes de ocultar el texto en la imagen, es necesario crearlo...
+
+'
+sleep 5
+echo ' 
+//creando archivo de texto...' 
+sleep 3
+clear
+echo ' 
+
+
+[ X ] A continuación escribe el texto a ocultar en la imagen
+
+' 
+read -p 'C:\ ' text
+echo $text > ocultar.txt
+sleep 2
+echo 'Creado con éxito!!' 
+sleep 1.3 
+imagen
+}
+
+instalar() {
+clear
+echo ' ' 
+echo '[+]Configurando...
+' 
+sleep 3
+termux-setup-storage
+echo '
+
+[+] Instalando...
+
+'
+pkg install steghide
+sleep 2
+elegir
+}
+vertexto() {
+clear
+sleep 1
+echo '
+[ X ] Elige si utilizar la imagen por defecto u otra personalizada'
+sleep 0.1
+echo '' 
+echo '[ 1 ] Defecto' 
+sleep 0.1
+echo '[ 2 ] Personalizado
+' 
+read -p 'C:\ ' dec
+case $dec in
+1 | 01)
+	sleep 1
+	echo '
+	(+) Extrayendo Texto de imagen... 
+	
+	(+) Ingrese la contraseña de acceso al texto
+	' 
+	sleep 3
+	steghide extract -sf sfemz.jpg
+	echo '
+	
+	Almacenado como ocultar.txt 
+	' 
+	sleep 4
+	echo 'Abriendo el texto...' 
+	clear
+	cat ocultar.txt 
+	;;
+2 | 02)
+	echo ' ' 
+	ls
+	read -p 'Elige la imagen a usar:' dimg
+	echo '
+	(+) Extrayendo Texto de imagen... 
+	
+	(+) Ingrese la contraseña de acceso al texto
+	' 
+	sleep 3
+	steghide extract -sf $dimg
+	echo '
+	Almacenado como ocultar.txt 
+	' 
+	sleep 1
+	echo 'Abriendo el texto...' 
+	clear
+	cat ocultar.txt
+	;;
+*) 
+	echo '(+) Ninguna opción seleccionada' 
+	sleep 2
+	exit
+	;;
+esac
+} 
+elegir() {
+clear 
+echo '
+[+] Elige una opción
+'
+sleep 0.1
+echo '[ 1 ] Ocultar texto en imagen' 
+sleep 0.1
+echo '[ 2 ] Ver texto oculto 
+'
+sleep 0.1
+read -p 'C:\ ' opcion
+case $opcion in
+1)
+	sleep 1
+	ganog 
+	;;
+2) 
+	sleep 1
+	vertexto
+	;;
+*) 
+	sleep 2
+	echo 'Ninguna opción elegida
+'
+esac
+}  
+clear
+echo '
+
+          .-~~-.
+         (_~..~_)
+           ||||
+  __________________
+ (____    _||||_    ) HERRAMIENTA
+   ___)  ( _/\_ )  (___
+  (_      ~-..-~      _)  DE
+ ___)                (___
+(______          ________) ESTEGANOGRAFIA
+    ___)        (
+   (_____________) BY: Sfemz
+
+'
+sleep 2
+echo '[ X ] En caso de ya tenerlo instalado elige (N)'
+echo ' ' 
+sleep 1
+read -p '[ X ] Desea instalar Ocultismo? (Y/N): ' instalar
+case $instalar in
+Si | s | si | y | Y | YES | SI | S) 
+	instalar
+	;;
+*)
+	sleep 2
+	clear 
+	echo '(Continuando...)' 
+	sleep 2
+	elegir
+	;;
+esac
