@@ -59,7 +59,7 @@ Texto ocultado exitosamente!!'
 ;;
 esac
 } 
-ganog() {
+sfemz() {
 clear
 sleep 2.5
 echo '
@@ -174,7 +174,7 @@ read -p 'C:\ ' opcion
 case $opcion in
 1)
 	sleep 1
-	ganog 
+	sfemz 
 	;;
 2) 
 	sleep 1
